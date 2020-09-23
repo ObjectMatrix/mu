@@ -1,0 +1,23 @@
+name: Deploy mu
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy-mu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install dependencies, Build application and Zip dist folder contents
+          run: npm install && npm run build && zip -qq -r -j ./bundle.zip ./dist/*
+      - name: deploy zip to aws lambda
+          uses: appleboy/lambda-action@master
+          with:
+            aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws_region: ${{ secrets.AWS_REGION }}
+            function_name: aws-chat-randy
+            zip_file: bundle.zip  
