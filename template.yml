@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  objectmatrix - little functions doing big things
+  
+
+Globals:
+  Function:
+    Timeout: 6
+
+
+Resources:
+  simpleFunction:
+     Type: AWS::Serverless::Function
+     Properties:
+       CodeUri: ./
+       Handler: app.lambdaHandler
+       Runtime: nodejs12.x
