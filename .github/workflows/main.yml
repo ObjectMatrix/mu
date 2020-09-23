@@ -23,3 +23,4 @@ jobs:
         aws_region: ${{ secrets.AWS_REGION }}
         function_name:  handler.index
         zip_file: bundle.zip
+        
