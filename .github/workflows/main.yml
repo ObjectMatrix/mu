@@ -20,7 +20,7 @@ jobs:
       run: npm install
     - name: zip dist
       run: zip -qq -r -j ./bundle.zip ./*
-    - name: default deploy
+    - name: default deploy lambda
       uses: appleboy/lambda-action@master
       with:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
