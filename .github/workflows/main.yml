@@ -21,10 +21,12 @@ jobs:
     - name: zip dist
       run: zip -qq -r -j ./bundle.zip ./*
     - name: default deploy lambda to AWS
-      uses: appleboy/lambda-action@master
+      uses: r0zar/sam-deploy-action@v1.0
       with:
+        TEMPLATE: 'template.yaml'
+        AWS_STACK_NAME: prod-${{ github.actor }}-objectmatrix
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: ${{ secrets.AWS_REGION }}
-        function_name:  handler.index
-        zip_file: bundle.zip
+        AWS_DEPLOY_BUCKET: ${{ secrets.AWS_DEPLOY_BUCKET }}
+        CAPABILITIES: CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
