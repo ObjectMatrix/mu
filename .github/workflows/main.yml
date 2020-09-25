@@ -12,7 +12,7 @@ jobs:
     - uses: mgenteluci/cloudformation-deploy-action@v1.4.0
       env:
         TEMPLATE: 'template.yml'
-        AWS_STACK_NAME: 'otherside-of-the-moon-stack'
+        AWS_STACK_NAME: 'the-dark-side-of-the-moon-stack'
         AWS_REGION: 'us-east-1'
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
