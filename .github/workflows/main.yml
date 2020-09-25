@@ -8,11 +8,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+<<<<<<< HEAD
     - uses: actions/checkout@v2
     - uses: mgenteluci/cloudformation-deploy-action@v1.4.0
       env:
         TEMPLATE: 'template.yml'
         AWS_STACK_NAME: 'otherside-of-the-moon-stack'
+=======
+    - uses: actions/checkout@v1
+    - uses: mgenteluci/cloudformation-deploy-action@v1.4.0
+      env:
+        TEMPLATE: 'template.yml'
+        AWS_STACK_NAME: 'the-dark-side-of-the-moon-stack'
+>>>>>>> 5639af5a49320fef9cdbb4f35cd4a10c95aceb75
         AWS_REGION: 'us-east-1'
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
