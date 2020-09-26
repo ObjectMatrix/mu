@@ -101,7 +101,7 @@ Resources:
       Handler: index.handler
       MemorySize: 256
       Role: !GetAtt LambdaIamRole.Arn
-      Runtime: Nodejs12
+      Runtime: python3.7
       Timeout: 60
 
   LambdaIamRole:
